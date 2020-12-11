@@ -1,0 +1,32 @@
+<haed>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet">
+    <style>
+        #div1{
+        font-family: 'Yeon Sung', cursive;
+        position: relative;
+        width: 450px;
+        margin: 0 auto;
+        }
+    </style>
+</head>
+<body><br><br><br><br><br><br><br><br>
+    <div id="div1">    
+        <h1>{{keyword}}의 연관검색어입니다.</h1><br>
+
+   {% for num, word in keyword_list%}
+    <span class="badge bg-light text-dark" style="font-size:1rem;">{{word}}</span>&nbsp&nbsp
+    {% endfor %}<br><br>
+    {% if not keyword_list %}
+    <span class="badge bg-light text-dark" style="font-size:1rem; ">연관검색어가없네요 ㅠㅠ</span><br><br>
+        
+    {% endif %}
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <a href="{% url 'home' %}"><button type="button" class="btn btn-light">돌아가기</button></a><br><br>
+    &nbsp&nbsp&nbsp&nbsp&nbsp
+    <span> 개발자 : 건국대학교 컴퓨터공학과 16학번 조성민</span><br>
+    &nbsp&nbsp&nbsp&nbsp&nbsp
+    <span> 기술 블로그 : <a target="_blank" style="color:black;text-decoration:none;" href="https://applepick.tistory.com/">https://applepick.tistory.com/</span>
+
+    </body>
