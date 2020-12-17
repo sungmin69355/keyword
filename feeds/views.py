@@ -22,18 +22,14 @@ def result(request):
     keywordarray = soup.select('div[class="tit"]')
     tag = soup.select('div[class="total_tag_area"]')
     notkeyword = "For you 함께 클릭한 상품 추천"
-    keyword_list = []
-    keyword_list_print = {}
-    tag_list = []
-    tag_list_print = {}
+    keyword_list = {}
+    tag_list ={}
 
     for i in range(len(keywordarray)):
         if(notkeyword !=keywordarray[i].text.strip()):
-            keyword_list.append(keywordarray[i].text.strip())
-            keyword_list_print[i] = keywordarray[i].text.strip()
+            keyword_list[i] = keywordarray[i].text.strip()
 
     for i in range(len(tag)):
-        tag_list.append(tag[i].text.strip())
         tag_list[i] = tag[i].text.strip()
 
     if not keyword_list:
@@ -54,4 +50,4 @@ def result(request):
         keywordmodel.save()
 
 
-    return render(request, 'result.html',{'keyword_list':keyword_list_print.items(),'keyword':keyword,'tag_list':tag_list_print.items()})
+    return render(request, 'result.html',{'keyword_list':keyword_list.items(),'keyword':keyword,'tag_list':tag_list.items()})
