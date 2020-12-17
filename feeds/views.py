@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 import requests
 from bs4 import BeautifulSoup 
 from selenium.webdriver.common.keys import Keys
@@ -20,22 +20,39 @@ def result(request):
     soup = BeautifulSoup(html, 'html.parser')
 
     keywordarray = soup.select('div[class="tit"]')
-
-    keyword_list =[]
+    tag = soup.select('div[class="total_tag_area"]')
+    notkeyword = "For you 함께 클릭한 상품 추천"
+    keyword_list = []
     keyword_list_print = {}
+    tag_list = []
+    tag_list_print = {}
 
     for i in range(len(keywordarray)):
-        keyword_list.append(keywordarray[i].text.strip())
-        keyword_list_print[i] = keywordarray[i].text.strip()
+        if(notkeyword !=keywordarray[i].text.strip()):
+            keyword_list.append(keywordarray[i].text.strip())
+            keyword_list_print[i] = keywordarray[i].text.strip()
+
+    for i in range(len(tag)):
+        tag_list.append(tag[i].text.strip())
+        tag_list[i] = tag[i].text.strip()
 
     if not keyword_list:
         print("저장 x")
+        if not tag_list:
+            print("테그저장 x")
+        else:
+            keywordmodel.keyword = keyword
+            keywordmodel.keyword_list = None
+            keywordmodel.tag_list = tag_list
+            keywordmodel.save()
     else :
         keywordmodel.keyword = keyword
         keywordmodel.keyword_list = keyword_list
+        if not tag_list:
+            print("테그저장 x")
+        else:
+            keywordmodel.tag_list = tag_list
         keywordmodel.save()
 
 
-    return render(request, 'result.html',{'keyword_list':keyword_list_print.items(),'keyword':keyword})
-
-
+    return render(request, 'result.html',{'keyword_list':keyword_list_print.items(),'keyword':keyword,'tag_list':tag_list_print.items()})
