@@ -28,9 +28,14 @@
     {% endfor %}<br>
     {% if not keyword_list %}
     <span class="badge bg-light text-dark" style="font-size:1rem; ">연관 검색어가없네요 ㅠㅠ</span><br><br>
-    {% endif %}<br><br>
-    <div id="divToggle" style="display: none;">
+    {% endif %}<br>
+    <div id="divToggle" style="display: none;       
+     font-family: 'Yeon Sung', cursive;
+    position: relative;
+    width: 450px;
+    margin: 0 auto;" >
     <h1>{{keyword}}의 연관 해시태그입니다.</h1>
+
     {% for num, word in tag_list%}
     <span class="badge bg-light text-dark" style="font-size:1rem;">{{word}}</span>&nbsp&nbsp
     {% endfor %}<br>
@@ -41,7 +46,7 @@
     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
     <a href="{% url 'home' %}"><button class="btn btn-light">돌아가기</button></a>
-    <button id="button" class="btn btn-light">관련헤시테그보기</button><br><br>
+    <button id="button" class="btn btn-light">연관헤시테그보기</button><br><br>
     &nbsp&nbsp&nbsp&nbsp&nbsp
     <span> 개발자 : 건국대학교 컴퓨터공학과 16학번 조성민</span><br>
     &nbsp&nbsp&nbsp&nbsp&nbsp
