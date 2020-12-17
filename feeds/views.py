@@ -42,7 +42,6 @@ def result(request):
             print("테그저장 x")
         else:
             keywordmodel.keyword = keyword
-            keywordmodel.keyword_list = None
             keywordmodel.tag_list = tag_list
             keywordmodel.save()
     else :
