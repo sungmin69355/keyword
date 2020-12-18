@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', feeds.views.home, name="home"),
     path('result/', feeds.views.result, name="result"),
+    path('stock/', feeds.views.stock, name="stock"),
 
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

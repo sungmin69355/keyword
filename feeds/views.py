@@ -54,3 +54,6 @@ def result(request):
 
 
     return render(request, 'result.html',{'keyword_list':keyword_list.items(),'keyword':keyword,'tag_list':tag_list})
+
+def stock(reqeust):
+    return render(reqeust, 'stock.html')
