@@ -24,13 +24,16 @@ def result(request):
     notkeyword = "For you 함께 클릭한 상품 추천"
     keyword_list = {}
     tag_list ={}
+    tag_overlap_list_keyword =[]
 
     for i in range(len(keywordarray)):
         if(notkeyword !=keywordarray[i].text.strip()):
             keyword_list[i] = keywordarray[i].text.strip()
 
     for i in range(len(tag)):
-        tag_list[i] = tag[i].text.strip()
+        tag_overlap_list_keyword.append(tag[i].text.strip())
+    
+    tag_list = tuple(set(tag_overlap_list_keyword))
 
     if not keyword_list:  
         print("저장 x")
@@ -50,4 +53,4 @@ def result(request):
         keywordmodel.save()
 
 
-    return render(request, 'result.html',{'keyword_list':keyword_list.items(),'keyword':keyword,'tag_list':tag_list.items()})
+    return render(request, 'result.html',{'keyword_list':keyword_list.items(),'keyword':keyword,'tag_list':tag_list})

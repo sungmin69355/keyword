@@ -46,7 +46,7 @@
     margin: 0 auto;" >
     <h1>{{keyword}}의 연관 해시태그입니다.</h1>
 
-    {% for num, word in tag_list%}
+    {% for word in tag_list%}
     <span id="tagkeyword"class="badge bg-light text-dark" style="font-size:1rem;">{{word}}</span>&nbsp&nbsp
     {% endfor %}<br>
     {% if not tag_list %}
