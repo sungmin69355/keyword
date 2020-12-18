@@ -20,7 +20,7 @@ def result(request):
     soup = BeautifulSoup(html, 'html.parser')
 
     keywordarray = soup.select('div[class="tit"]')
-    tag = soup.select('div[class="total_tag_area"]')
+    tag = soup.select('.total_tag_area span[class*=txt]')  
     notkeyword = "For you 함께 클릭한 상품 추천"
     keyword_list = {}
     tag_list ={}
@@ -32,7 +32,7 @@ def result(request):
     for i in range(len(tag)):
         tag_list[i] = tag[i].text.strip()
 
-    if not keyword_list:
+    if not keyword_list:  
         print("저장 x")
         if not tag_list:
             print("테그저장 x")

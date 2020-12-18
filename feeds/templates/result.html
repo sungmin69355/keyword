@@ -3,6 +3,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.3/clipboard.min.js"></script>  <!-- 클립보드복사 -->
     <style>
         #div1{
         font-family: 'Yeon Sung', cursive;
@@ -12,11 +13,20 @@
         }
     </style>
      <script>
+         //이 함수는 버튼을 누르면 연관해시태그div를 보여주는 함수입니다.
         $(function (){
             $("#button").click(function (){
               $("#divToggle").toggle();
           });
-        });
+        });  
+        //이 함수는 해시태그 내용복사하는 함수입니다.
+        $(function(){
+	        $('#copybutton').click(function(){
+		    $('#tagkeyword').select() //복사할 텍스트를 선택
+		    document.execCommand("copy") //클립보드 복사 실행
+		    alert('복사완료')
+	        })
+        })
      </script>
 </head>
 <body><br><br><br><br><br><br><br><br>
@@ -37,16 +47,16 @@
     <h1>{{keyword}}의 연관 해시태그입니다.</h1>
 
     {% for num, word in tag_list%}
-    <span class="badge bg-light text-dark" style="font-size:1rem;">{{word}}</span>&nbsp&nbsp
+    <span id="tagkeyword"class="badge bg-light text-dark" style="font-size:1rem;">{{word}}</span>&nbsp&nbsp
     {% endfor %}<br>
     {% if not tag_list %}
     <span class="badge bg-light text-dark" style="font-size:1rem; ">연관 해시태그가없네요 ㅠㅠ</span><br><br>
     {% endif %}
     </div><br>
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    &nbsp&nbsp&nbsp
     <a href="{% url 'home' %}"><button class="btn btn-light">돌아가기</button></a>
-    <button id="button" class="btn btn-light">연관헤시테그보기</button><br><br>
+    <button id="button" class="btn btn-light">연관헤시테그보기</button>
+    <button  id="copybutton" class="btn btn-light">연관헤시테그복사하기</button><br><br>
     &nbsp&nbsp&nbsp&nbsp&nbsp
     <span> 개발자 : 건국대학교 컴퓨터공학과 16학번 조성민</span><br>
     &nbsp&nbsp&nbsp&nbsp&nbsp
