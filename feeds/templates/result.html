@@ -11,7 +11,7 @@
         #div1{
         font-family: 'Yeon Sung', cursive;
         position: relative;
-        width:100%;
+        width:450px;
 
         margin: 0 auto;
         }
@@ -34,7 +34,7 @@
      </script>
 </head>
 <body><br><br><br><br><br><br><br><br>
-    <div id="div1">    
+    <div id="div1" align="center">    
         <h1>{{keyword}}의 연관검색어입니다.</h1>
 
    {% for num, word in keyword_list%}
@@ -46,7 +46,7 @@
     <div id="divToggle" style="display: none;       
      font-family: 'Yeon Sung', cursive;
     position: relative;
-    width: 100%;
+    width: 450px;
     margin: 0 auto;" >
     <h2>{{keyword}}의 연관 해시태그입니다.</h2>
 
