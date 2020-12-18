@@ -1,0 +1,30 @@
+{% load static %}
+<html>
+
+    <head>
+        <link rel="stylesheet" href="{% static 'headerbar.css' %}">
+        <style type="text/css"> 
+            a:link { color: black; text-decoration: none;}
+            a:visited { color: black; text-decoration: none;}
+            a:hover { color: black; text-decoration: none;}
+        
+            </style> 
+    </head>
+
+<div class="header">
+    <div class="title">
+<a href="https://applepick.tistory.com/">
+<img class="logo" src="/static/bar.jpeg" />
+</a>
+<span>Apple's pick</span>
+</div>
+    <div class="buttons">
+    <button class="links"><a href="{% url 'home' %}">Home</a></button>
+      <button class="links"><a href="{% url 'home' %}">연관검색어</a></button>
+      <button class="links"><a href="{% url 'home' %}">주식정보</a></button>
+    </div>
+</div>
+</html>
+{% block contents %} <!--하단내용-->
+    
+{% endblock %}
