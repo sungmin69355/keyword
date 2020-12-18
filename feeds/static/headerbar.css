@@ -22,8 +22,8 @@ div.header {
     margin-right: 0.625em;
   }
   div.header > div.title > a > img.logo {
-    width: 45px;
-    height:45px;
+    width: 2.5em;
+    height:2.5em;
     border-radius: 25px;
   }
   
